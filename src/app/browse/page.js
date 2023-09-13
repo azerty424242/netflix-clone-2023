@@ -5,26 +5,14 @@ import CommonLayout from "@/components/common-layout";
 import ManageAccounts from "@/components/manage-accounts";
 import UnauthPage from "@/components/unauth-page";
 import { GlobalContext } from "@/context";
-import {
-  getAllfavorites,
-  getPopularMedias,
-  getTopratedMedias,
-  getTrendingMedias,
-} from "@/utils";
+import { getAllfavorites, getPopularMedias, getTopratedMedias, getTrendingMedias } from "@/utils";
 import { useSession } from "next-auth/react";
 import { useContext, useEffect } from "react";
 
 
 
 export default function Browse() {
-  const {
-    loggedInAccount,
-    mediaData,
-    setMediaData,
-    setPageLoader,
-    pageLoader,
-  } = useContext(GlobalContext);
-
+  const { loggedInAccount, mediaData, setMediaData, setPageLoader, pageLoader } = useContext(GlobalContext);
   const { data: session } = useSession();
 
   console.log(session, "session");

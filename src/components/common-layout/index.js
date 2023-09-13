@@ -6,6 +6,7 @@ import Navbar from "../navbar";
 import MediaRow from "../media-row";
 import Banner from "../banner";
 
+
 export default function CommonLayout({ mediaData }) {
   return (
     <motion.div

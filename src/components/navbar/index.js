@@ -10,6 +10,7 @@ import AccountPopup from "./account-popup";
 import CircleLoader from "../circle-loader";
 import DetailsPopup from "../details-popup";
 
+
 export default function Navbar() {
   const { data: session } = useSession();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,16 +21,11 @@ export default function Navbar() {
   const pathName = usePathname();
 
   const {
-    setPageLoader,
-    loggedInAccount,
-    setAccounts,
-    accounts,
-    setLoggedInAccount,
-    pageLoader,
-    showDetailsPopup,
-    setShowDetailsPopup,
+    setPageLoader, loggedInAccount, setAccounts, accounts, setLoggedInAccount,
+    pageLoader, showDetailsPopup, setShowDetailsPopup,
   } = useContext(GlobalContext);
 
+  // TODO: Export menuItems
   const menuItems = [
     {
       id: "home",
@@ -53,6 +49,7 @@ export default function Navbar() {
     },
   ];
 
+  //--------------- HANDLE SCROLL -------------------
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) setIsScrolled(true);
@@ -66,6 +63,7 @@ export default function Navbar() {
     };
   }, []);
 
+  //--------------- FETCH ALL ACCOUNTS + USE EFFECT -------------------
   async function getAllAccounts() {
     const res = await fetch(
       `/api/account/get-all-accounts?id=${session?.user?.uid}`,
@@ -92,32 +90,18 @@ export default function Navbar() {
 
   if (pageLoader) return <CircleLoader />;
 
+
   return (
     <div className="relative">
-      <header
-        className={`header ${isScrolled && "bg-[#141414]"} hover:bg-[#141414]`}
-      >
+      <header className={`header ${isScrolled && "bg-[#141414]"} hover:bg-[#141414]`}>
         <div className="flex items-center space-x-2 md:space-x-10">
-          <img
-            src="https://rb.gy/ulxxee"
-            width={120}
-            height={120}
-            alt="NETFLIX"
-            className="cursor-pointer object-contain"
-            onClick={() => router.push("/browse")}
-          />
+          <img onClick={() => router.push("/browse")} src="https://rb.gy/ulxxee" width={120} height={120} alt="NETFLIX" className="cursor-pointer object-contain"/>
           <ul className="hidden md:space-x-4 md:flex cursor-pointer">
             {menuItems.map((item) => (
-              <li
+              <li key={item.id} className="cursor-pointer text-[16px] font-light text-[#e5e5e5] transition duration-[.4s] hover:text-[#b3b3b3]"
                 onClick={() => {
-                  setPageLoader(true);
-                  router.push(item.path);
-                  setSearchQuery("");
-                  setShowSearchBar(false);
-                }}
-                className="cursor-pointer text-[16px] font-light text-[#e5e5e5] transition duration-[.4s] hover:text-[#b3b3b3]"
-                key={item.id}
-              >
+                  setPageLoader(true);  router.push(item.path);  setSearchQuery("");  setShowSearchBar(false);
+                }}>
                 {item.title}
               </li>
             ))}
@@ -126,40 +110,27 @@ export default function Navbar() {
         <div className="font-light flex items-center space-x-4 text-sm">
           {showSearchBar ? (
             <Search
-              pathName={pathName}
-              router={router}
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
+              pathName={pathName} router={router} searchQuery={searchQuery}
               setPageLoader={setPageLoader}
-              setShowSearchBar={setShowSearchBar}
+              setShowSearchBar={setShowSearchBar} setSearchQuery={setSearchQuery}
             />
           ) : (
-            <AiOutlineSearch
-              onClick={() => setShowSearchBar(true)}
-              className="hidden sm:inline sm:w-6 sm:h-6 cursor-pointer"
-            />
+            <AiOutlineSearch className="hidden sm:inline sm:w-6 sm:h-6 cursor-pointer"
+              onClick={() => setShowSearchBar(true)}/>
           )}
-          <div
-            onClick={() => setShowAccountPopup(!showAccountPopup)}
-            className="flex gap-2 items-center cursor-pointer"
-          >
-            <img
-              src="https://occ-0-2611-3663.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABfNXUMVXGhnCZwPI1SghnGpmUgqS_J-owMff-jig42xPF7vozQS1ge5xTgPTzH7ttfNYQXnsYs4vrMBaadh4E6RTJMVepojWqOXx.png?r=1d4"
-              alt="Current Profile"
-              className="max-w-[30px] rounded min-w-[20px] max-h-[30px] min-h-[20px] object-cover w-[30px] h-[30px]"
-            />
+          <div onClick={() => setShowAccountPopup(!showAccountPopup)} className="flex gap-2 items-center cursor-pointer">
+            <img className="max-w-[30px] rounded min-w-[20px] max-h-[30px] min-h-[20px] object-cover w-[30px] h-[30px]" src="https://occ-0-2611-3663.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABfNXUMVXGhnCZwPI1SghnGpmUgqS_J-owMff-jig42xPF7vozQS1ge5xTgPTzH7ttfNYQXnsYs4vrMBaadh4E6RTJMVepojWqOXx.png?r=1d4" alt="Current Profile"/>
             <p>{loggedInAccount && loggedInAccount.name}</p>
           </div>
         </div>
       </header>
+
       <DetailsPopup show={showDetailsPopup} setShow={setShowDetailsPopup} />
       {showAccountPopup && (
         <AccountPopup
-          accounts={accounts}
-          setPageLoader={setPageLoader}
+          accounts={accounts} setPageLoader={setPageLoader}
           signOut={signOut}
-          loggedInAccount={loggedInAccount}
-          setLoggedInAccount={setLoggedInAccount}
+          loggedInAccount={loggedInAccount} setLoggedInAccount={setLoggedInAccount}
         />
       )}
     </div>
