@@ -1,6 +1,8 @@
 const API_KEY = "a20df8de81dcd3a7ebc3be8629652d58";
 const BASE_URL = "https://api.themoviedb.org/3";
 
+
+//-------------  TRENDING MOVIES  ------------------
 export const getTrendingMedias = async (type) => {
   try {
     const res = await fetch(
@@ -18,6 +20,7 @@ export const getTrendingMedias = async (type) => {
   }
 };
 
+//-------------  TOP RATED MOVIES  ------------------
 export const getTopratedMedias = async (type) => {
   try {
     const res = await fetch(
@@ -35,6 +38,7 @@ export const getTopratedMedias = async (type) => {
   }
 };
 
+//-------------  POPULAR MOVIES  ------------------
 export const getPopularMedias = async (type) => {
   try {
     const res = await fetch(
@@ -52,6 +56,7 @@ export const getPopularMedias = async (type) => {
   }
 };
 
+//-------------  TOP MOVIES BY GENRE  ------------------
 export const getTVorMoviesByGenre = async (type, id) => {
   try {
     const res = await fetch(
@@ -69,6 +74,7 @@ export const getTVorMoviesByGenre = async (type, id) => {
   }
 };
 
+//-------------  TOP MOVIES BY ID  ------------------
 export const getTVorMovieVideosByID = async (type, id) => {
   try {
     const res = await fetch(
@@ -86,6 +92,7 @@ export const getTVorMovieVideosByID = async (type, id) => {
   }
 };
 
+//-------------  SEARCH RESULTS 🔍  ------------------
 export const getTVorMovieSearchResults = async (type, query) => {
   try {
     const res = await fetch(
@@ -103,6 +110,7 @@ export const getTVorMovieSearchResults = async (type, query) => {
   }
 };
 
+//-------------  DETAILS BY ID  ------------------
 export const getTVorMovieDetailsByID = async (type, id) => {
   try {
     const res = await fetch(
@@ -120,6 +128,7 @@ export const getTVorMovieDetailsByID = async (type, id) => {
   }
 };
 
+//-------------  SIMILAR MOVIES  ------------------
 export const getSimilarTVorMovies = async (type, id) => {
   try {
     const res = await fetch(
@@ -137,6 +146,7 @@ export const getSimilarTVorMovies = async (type, id) => {
   }
 };
 
+//-------------  ALL FAVORITES 😍  ------------------
 export const getAllfavorites = async (uid, accountID) => {
   try {
     const res = await fetch(

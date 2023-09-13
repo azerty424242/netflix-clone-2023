@@ -7,6 +7,7 @@ import { IoMdInformationCircleOutline } from "react-icons/io";
 
 const baseUrl = "https://image.tmdb.org/t/p/original";
 
+
 export default function Banner({ medias }) {
   const createRandomMedia =
     medias && medias.length

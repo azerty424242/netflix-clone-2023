@@ -26,6 +26,7 @@ export default function Browse() {
       const trendingMovieShows = await getTrendingMedias("movie");
       const popularMovieShows = await getPopularMedias("movie");
       const topratedMovieShows = await getTopratedMedias("movie");
+
       const allFavorites = await getAllfavorites(
         session?.user?.uid,
         loggedInAccount?._id
