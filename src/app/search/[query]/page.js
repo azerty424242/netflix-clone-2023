@@ -12,15 +12,9 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/navbar";
 import MediaItem from "@/components/media-item";
 
-export default function Search() {
-  const {
-    loggedInAccount,
-    searchResults,
-    pageLoader,
-    setPageLoader,
-    setSearchResults,
-  } = useContext(GlobalContext);
 
+export default function Search() {
+  const { loggedInAccount, searchResults, pageLoader, setPageLoader, setSearchResults} = useContext(GlobalContext);
   const { data: session } = useSession();
   const params = useParams();
 
@@ -28,15 +22,11 @@ export default function Search() {
     async function getSearchResults() {
       const tvShows = await getTVorMovieSearchResults("tv", params.query);
       const movies = await getTVorMovieSearchResults("movie", params.query);
-      const allFavorites = await getAllfavorites(
-        session?.user?.uid,
-        loggedInAccount?._id
-      );
+      const allFavorites = await getAllfavorites( session?.user?.uid, loggedInAccount?._id);
+
       setSearchResults([
         ...tvShows
-          .filter(
-            (item) => item.backdrop_path !== null && item.poster_path !== null
-          )
+          .filter( (item) => item.backdrop_path !== null && item.poster_path !== null )
           .map((tvShowItem) => ({
             ...tvShowItem,
             type: "tv",
@@ -48,9 +38,7 @@ export default function Search() {
                 : false,
           })),
         ...movies
-          .filter(
-            (item) => item.backdrop_path !== null && item.poster_path !== null
-          )
+          .filter( (item) => item.backdrop_path !== null && item.poster_path !== null )
           .map((movieItem) => ({
             ...movieItem,
             type: "movie",
@@ -72,12 +60,10 @@ export default function Search() {
   if (loggedInAccount === null) return <ManageAccounts />;
   if (pageLoader) return <CircleLoader />;
 
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-    >
+    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+
       <Navbar />
       <div className="mt-[100px] space-y-0.5 md:space-y-2 px-4">
         <h2 className="cursor-pointer text-sm font-semibold text-[#e5e5e5] transition-colors duration-200 hover:text-white md:text-2xl">
@@ -86,11 +72,7 @@ export default function Search() {
         <div className="grid grid-cols-5 gap-3 items-center scrollbar-hide md:p-2">
           {searchResults && searchResults.length
             ? searchResults.map((searchItem) => (
-                <MediaItem
-                  key={searchItem.id}
-                  media={searchItem}
-                  searchView={true}
-                />
+                <MediaItem key={searchItem.id} media={searchItem} searchView={true}/>
               ))
             : null}
         </div>

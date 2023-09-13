@@ -72,7 +72,6 @@ export default function ManageAccounts() {
     console.log(data, "datadata");                    // 1:14:00 ("datadata" to check easier on the console)
   }
 
-
   //----------------  HANDLE REMOVE ACCOUNT  -------------------//
   async function handleRemoveAccount(getItem) {
     const res = await fetch(
@@ -87,7 +86,6 @@ export default function ManageAccounts() {
       setShowDeleteIcon(false);
     }
   }
-
 
   //----------------  HANDLE PIN SUBMIT  -------------------//
   async function handlePinSubmit(value, index) {
@@ -122,7 +120,6 @@ export default function ManageAccounts() {
       setPin("");
     }
   }
-
 
   //----------------  PAGE LOADER  -------------------//
   console.log(pageLoader, "accounts");

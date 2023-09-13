@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ReactPlayer from "react-player";
 
+
 export default function Watch() {
   const [mediaDetails, setMediaDetails] = useState(null);
   const [key, setKey] = useState(null);
@@ -51,6 +52,7 @@ export default function Watch() {
   }, [params]);
 
   if (pageLoader && mediaDetails === null) return <CircleLoader />;
+
 
   return (
     <motion.div
