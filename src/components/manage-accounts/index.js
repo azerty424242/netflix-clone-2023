@@ -15,22 +15,13 @@ const initialFormData = {
 };
 
 export default function ManageAccounts() {
-  const {
-    accounts,
-    setAccounts,
-    pageLoader,
-    setPageLoader,
-    setLoggedInAccount,
-  } = useContext(GlobalContext);
+  const {accounts, setAccounts, pageLoader, setPageLoader, setLoggedInAccount} = useContext(GlobalContext);
   const [showAccountForm, setShowAccountForm] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
   const [showDeleteIcon, setShowDeleteIcon] = useState(false);
   const [pin, setPin] = useState("");
   const [pinError, setPinError] = useState(false);
-  const [showPinContainer, setShowPinContainer] = useState({
-    show: false,
-    account: null,
-  });
+  const [showPinContainer, setShowPinContainer] = useState({ show: false, account: null });
   const { data: session } = useSession();
   const pathname = usePathname();
   const router = useRouter();
