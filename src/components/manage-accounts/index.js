@@ -47,6 +47,8 @@ export default function ManageAccounts() {
     getAllAccounts();
   }, []);
 
+
+  //----------------  HANDLE SAVE ACCOUNT  -------------------//
   async function handleSave() {
     const res = await fetch("/api/account/create-account", {
       method: "POST",
@@ -67,9 +69,11 @@ export default function ManageAccounts() {
       getAllAccounts();
     }
 
-    console.log(data, "datadata");
+    console.log(data, "datadata");                    // 1:14:00 ("datadata" to check easier on the console)
   }
 
+
+  //----------------  HANDLE REMOVE ACCOUNT  -------------------//
   async function handleRemoveAccount(getItem) {
     const res = await fetch(
       `/api/account/remove-account?id=${getItem._id}`,
@@ -85,6 +89,7 @@ export default function ManageAccounts() {
   }
 
 
+  //----------------  HANDLE PIN SUBMIT  -------------------//
   async function handlePinSubmit(value, index) {
     setPageLoader(true)
     const response = await fetch("/api/account/login-to-account", {
@@ -118,6 +123,8 @@ export default function ManageAccounts() {
     }
   }
 
+
+  //----------------  PAGE LOADER  -------------------//
   console.log(pageLoader, "accounts");
 
   if (pageLoader) return <CircleLoader />;
