@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useContext } from "react";
 import { GlobalContext } from "@/context";
 import { useSession } from "next-auth/react";
-import { getAllfavorites } from "@/utils";
+import { getAllfavorites } from "@/fetch-utils";
 
 const baseUrl = "https://image.tmdb.org/t/p/w500";
 

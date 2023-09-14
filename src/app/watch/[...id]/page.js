@@ -2,7 +2,7 @@
 
 import CircleLoader from "@/components/circle-loader";
 import { GlobalContext } from "@/context";
-import { getTVorMovieVideosByID } from "@/utils";
+import { getTVorMovieVideosByID } from "@/fetch-utils";
 import { useParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";

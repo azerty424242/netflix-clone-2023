@@ -1,16 +1,16 @@
 "use client";
 
 import { GlobalContext } from "@/context";
-import { getAllfavorites } from "@/utils";
+import { getAllfavorites } from "@/fetch-utils";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { motion } from "framer-motion";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/navbar/navbar";
 import MediaItem from "@/components/media-item";
 import CircleLoader from "@/components/circle-loader";
 import UnauthPage from "@/components/unauth-page";
-import ManageAccounts from "@/components/manage-accounts";
+import ManageAccounts from "@/components/manage-accounts/manage-accounts";
 
 
 export default function MyList() {

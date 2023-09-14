@@ -1,15 +1,15 @@
 "use client";
 
 import CircleLoader from "@/components/circle-loader";
-import ManageAccounts from "@/components/manage-accounts";
+import ManageAccounts from "@/components/manage-accounts/manage-accounts";
 import UnauthPage from "@/components/unauth-page";
 import { GlobalContext } from "@/context";
-import { getAllfavorites, getTVorMovieSearchResults } from "@/utils";
+import { getAllfavorites, getTVorMovieSearchResults } from "@/fetch-utils";
 import { useSession } from "next-auth/react";
 import { useParams } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/navbar/navbar";
 import MediaItem from "@/components/media-item";
 
 

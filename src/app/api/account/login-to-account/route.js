@@ -1,4 +1,4 @@
-import connectToDB from "@/database";
+import connectToDB from "@/mongodb";
 import Account from "@/models/Account";
 import { compare } from "bcryptjs";
 import { NextResponse } from "next/server";

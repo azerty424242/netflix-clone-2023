@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import Head from "next/head";
-import Navbar from "../navbar";
-import MediaRow from "../media-row";
-import Banner from "../banner";
+import Navbar from "./navbar/navbar";
+import MediaRow from "./media-row";
+import Banner from "./banner";
 
 
 export default function CommonLayout({ mediaData }) {

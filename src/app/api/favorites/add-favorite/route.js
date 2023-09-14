@@ -1,4 +1,4 @@
-import connectToDB from "@/database";
+import connectToDB from "@/mongodb";
 import Favorites from "@/models/Favorite";
 import { NextResponse } from "next/server";
 

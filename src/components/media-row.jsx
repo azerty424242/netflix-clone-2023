@@ -1,6 +1,6 @@
 "use client";
 
-import MediaItem from "../media-item";
+import MediaItem from "./media-item";
 
 export default function MediaRow({ title, medias }) {
   return (

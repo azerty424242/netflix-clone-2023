@@ -1,11 +1,11 @@
 "use client";
 
 import CircleLoader from "@/components/circle-loader";
-import CommonLayout from "@/components/common-layout";
-import ManageAccounts from "@/components/manage-accounts";
+import CommonLayout from "@/components/comon-layout";
+import ManageAccounts from "@/components/manage-accounts/manage-accounts";
 import UnauthPage from "@/components/unauth-page";
 import { GlobalContext } from "@/context";
-import { getAllfavorites, getPopularMedias, getTopratedMedias, getTrendingMedias } from "@/utils";
+import { getAllfavorites, getPopularMedias, getTopratedMedias, getTrendingMedias } from "@/fetch-utils";
 import { useSession } from "next-auth/react";
 import { useContext, useEffect } from "react";
 
