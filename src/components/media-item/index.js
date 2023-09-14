@@ -21,7 +21,8 @@ export default function MediaItem({ media, searchView = false, similarMovieView 
 
   const { data: session } = useSession();
 
-  //-----------  UPDATE FAVORITES 😍 (TODO ??) ---------------
+  //-----------  UPDATE FAVORITES 😍  ---------------
+  //---------- from the popup (4:47:30) --------------
   async function updateFavorites() {
     const res = await getAllfavorites(session?.user?.uid, loggedInAccount?._id);
     if (res)
@@ -80,6 +81,7 @@ export default function MediaItem({ media, searchView = false, similarMovieView 
       } else {
         let updatedMediaData = [...mediaData];
 
+        // Begin --> 5:00:00
         const findIndexOfRowItem = updatedMediaData.findIndex(
           (item) => item.title === title
         );
@@ -96,6 +98,7 @@ export default function MediaItem({ media, searchView = false, similarMovieView 
         };
 
         setMediaData(updatedMediaData);
+        // End --> 5:02:50
       }
     }
 

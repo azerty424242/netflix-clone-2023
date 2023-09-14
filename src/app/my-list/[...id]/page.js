@@ -12,14 +12,9 @@ import CircleLoader from "@/components/circle-loader";
 import UnauthPage from "@/components/unauth-page";
 import ManageAccounts from "@/components/manage-accounts";
 
+
 export default function MyList() {
-  const {
-    favorites,
-    setFavorites,
-    pageLoader,
-    setPageLoader,
-    loggedInAccount,
-  } = useContext(GlobalContext);
+  const { favorites, setFavorites, pageLoader, setPageLoader, loggedInAccount} = useContext(GlobalContext);
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -46,12 +41,10 @@ export default function MyList() {
   if (loggedInAccount === null) return <ManageAccounts />;
   if (pageLoader) return <CircleLoader />;
 
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-    >
+    <motion.div initial={{ opacity: 0 }}  whileInView={{ opacity: 1 }}  viewport={{ once: true }}>
+
       <Navbar />
       <div className="mt-[100px] space-y-0.5 md:space-y-2 px-4">
         <h2 className="cursor-pointer text-sm font-semibold text-[#e5e5e5] transition-colors duration-200 hover:text-white md:text-2xl">
@@ -60,11 +53,7 @@ export default function MyList() {
         <div className="grid grid-cols-5 gap-3 items-center scrollbar-hide md:p-2">
           {favorites && favorites.length
             ? favorites.map((searchItem) => (
-                <MediaItem
-                  key={searchItem.id}
-                  media={searchItem}
-                  listView={true}
-                />
+                <MediaItem  key={searchItem.id}  media={searchItem}  listView={true}/>
               ))
             : 'No favorites added'}
         </div>
