@@ -106,6 +106,7 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          <p>Made with ❤️ by Reactinary ⚛️</p>
         </div>
         <div className="font-light flex items-center space-x-4 text-sm">
           {showSearchBar ? (
