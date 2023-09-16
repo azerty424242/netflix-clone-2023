@@ -165,6 +165,8 @@ export default function ManageAccounts() {
           <span onClick={() => setShowDeleteIcon(!showDeleteIcon)} className="border border-gray-100 cursor-pointer tracking-wide inline-flex text-sm px-[1.5em] py-[0.5em]">
             Manage Profiles
           </span>
+          <br></br>
+          <p>Default pin: 1234</p>
         </div>
       </div>
       <PinContainer
